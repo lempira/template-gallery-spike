@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { fetchExamplesYaml } from '../data';
+
+export async function getStaticPaths() {
+  const examples = await fetchExamplesYaml();
+  return examples.map(example => ({
+    params: { id: example.id },
+    props: { example },
+  }));
+}
+
+const { example } = Astro.props;
+---
+
+<Layout title={example.title}>
+  <main class="example-detail">
+    <h1>{example.title}</h1>
+    <img src={example.image} alt={example.title} />
+    <p>{example.description}</p>
+    {example.tags && (
+      <div class="tags">
+        {example.tags.map(tag => <span class="tag">{tag}</span>)}
+      </div>
+    )}
+  </main>
+</Layout>
+
+<style>
+  .example-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 2rem 0;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .tag {
+    background: #eee;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+</style>

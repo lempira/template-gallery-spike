@@ -1,0 +1,19 @@
+[project]
+name = "template-gallery-spike"
+version = "0.1.0"
+description = "A spike for the template gallery"
+authors = [
+    {name = "David Rojas",email = "lempira@gmail.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "copier (>=9.4.1,<10.0.0)",
+    "pyyaml (>=6.0.2,<7.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

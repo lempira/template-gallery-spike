@@ -1,0 +1,33 @@
+---
+import ExampleCard from '../components/ExampleCard.astro';
+import Layout from '../layouts/Layout.astro';
+import { fetchExamplesYaml } from '../data';
+
+const examples = await fetchExamplesYaml();
+
+---
+
+<Layout title="Example Gallery">
+	<main>
+		<h1>Example Gallery</h1>
+		<div class="gallery">
+			{examples.map(example => (
+				<ExampleCard example={example} />
+			))}
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.gallery {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 2rem;
+		padding: 2rem;
+	}
+
+	h1 {
+		text-align: center;
+		margin: 2rem 0;
+	}
+</style>
