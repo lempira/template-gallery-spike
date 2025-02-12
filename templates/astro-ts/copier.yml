@@ -1,0 +1,63 @@
+# Template information
+_min_copier_version: "9.0.0"
+_templates_suffix: ""
+
+# Template variables
+project_name:
+  type: str
+  help: What is the name of your project?
+  default: my-astro-project
+
+description:
+  type: str
+  help: Brief description of your project
+  default: A modern website built with Astro, React, and TypeScript
+
+author:
+  type: str
+  help: Your name
+  default: ""
+
+# Git configuration
+git_init:
+  type: bool
+  help: Initialize a git repository?
+  default: false
+
+# Dependencies configuration
+install_dependencies:
+  type: bool
+  help: Install npm dependencies after creation?
+  default: false
+
+# Computed variables
+_subdirectory: template_content
+
+# Tasks to run after generating the project
+_tasks:
+  - command: git init
+    when: "{{ git_init }}"
+    cwd: "{{ _copier_conf.dst_path }}"
+
+  - command: npm install
+    when: "{{ install_dependencies }}"
+    cwd: "{{ _copier_conf.dst_path }}"
+
+# Template configuration
+_exclude:
+  - "**/node_modules"
+  - "**/.env"
+  - "**/.env.*"
+
+# Update package.json with project info
+_jinja_extensions:
+  - jinja2_time.TimeExtension
+# _migrations:
+#   # {{ _copier_conf.src_path }} points to the path where the template was
+#   # cloned, so it can be helpful to run migration scripts stored there.
+#   - version: v1.0.0
+#     command: "echo 'Starting template generation...'"
+#     when: "{{ _stage == 'before' }}"
+#   - version: v1.0.0
+#     command: "echo 'Template generated successfully!'"
+#     when: "{{ _stage == 'after' }}"

@@ -10,7 +10,9 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "copier (>=9.4.1,<10.0.0)",
-    "pyyaml (>=6.0.2,<7.0.0)"
+    "pyyaml (>=6.0.2,<7.0.0)",
+    "jinja2-time (>=0.2.0,<0.3.0)",
+    "fire (>=0.7.0,<0.8.0)"
 ]
 
 

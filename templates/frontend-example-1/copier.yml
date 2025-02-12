@@ -1,0 +1,22 @@
+# Template configuration
+_templates_suffix: ""
+# _subdirectory: astro_template_content
+_subdirectory: "{% if framework_choice == 'astro' %}astro_template_content{% else %}react_template_content{% endif %}"
+
+# User prompts
+framework_choice:
+  type: str
+  help: Choose your frontend framework
+  choices:
+    - astro
+    - react
+
+# Additional configuration
+_message_after_copy: |
+  Template copied successfully!
+  Framework chosen: {{ framework_choice }}
+
+# Merge behavior configuration
+_answers_file: .copier-answers.yml
+_skip_if_exists: []
+_force: false

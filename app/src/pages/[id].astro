@@ -1,55 +1,88 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { fetchExamplesYaml } from '../data';
+import Layout from "../layouts/Layout.astro";
+import { fetchExamplesYaml } from "../data";
+import { Icon } from "astro-icon/components";
 
 export async function getStaticPaths() {
   const examples = await fetchExamplesYaml();
-  return examples.map(example => ({
+  return examples.map((example) => ({
     params: { id: example.id },
     props: { example },
   }));
 }
 
 const { example } = Astro.props;
+const { id, title, description, image, tags, links, author, features } =
+  example;
+const githubUrl = links.source;
+console.log({ id });
+// Add dynamic import using the title
+const { Content } = await import(`../../../examples/${id}/README.md`).catch(
+  () => null
+);
 ---
 
-<Layout title={example.title}>
-  <main class="example-detail">
-    <h1>{example.title}</h1>
-    <img src={example.image} alt={example.title} />
-    <p>{example.description}</p>
-    {example.tags && (
-      <div class="tags">
-        {example.tags.map(tag => <span class="tag">{tag}</span>)}
+<Layout title={title}>
+  <main class="container mx-auto flex flex-col pt-6">
+    <div
+      class="flex flex-col gap-2 mb-5 sticky top-0 bg-base-100 pt-6 pb-2 z-10"
+    >
+      <div class="flex items-center gap-2 mb-4">
+        <Icon name="mdi:arrow-left" />
+        <a href="/" class="link text-sm">Back to templates</a>
       </div>
-    )}
+      <h1 class="text-3xl font-bold">{title}</h1>
+      <div class="flex items-center gap-2">
+        <p class="text-sm">Creator {author}</p>
+        {
+          githubUrl && (
+            <a href={githubUrl} target="_blank" class="github-link">
+              <div class="flex items-center gap-1">
+                <Icon name="mdi:github" />
+                <span class="text-sm link">Source</span>
+              </div>
+            </a>
+          )
+        }
+      </div>
+      {
+        tags && (
+          <div class="flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span class="badge badge-primary">{tag}</span>
+            ))}
+          </div>
+        )
+      }
+    </div>
+    <div class="flex gap-6">
+      <div class="basis-2/4 flex flex-col gap-5">
+        <p class="">{description}</p>
+        {
+          features && (
+            <div class="flex flex-col gap-2">
+              <h2 class="text-lg font-bold">Features</h2>
+              {features.map((feature) => (
+                <div class="flex gap-2">
+                  <Icon name="mdi:check" />
+                  <span class="text-sm">{feature}</span>
+                </div>
+              ))}
+            </div>
+          )
+        }
+      </div>
+      <div class="basis-3/4">
+        <img src={image} alt={title} class="" />
+      </div>
+    </div>
+    <div
+      class="prose dark:prose-invert
+  prose-h1:font-bold prose-h1:text-xl
+  prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl
+  prose-headings:underline"
+    >
+      <Content />
+    </div>
   </main>
 </Layout>
-
-<style>
-  .example-detail {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin: 2rem 0;
-  }
-
-  .tags {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-
-  .tag {
-    background: #eee;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.875rem;
-  }
-</style>
