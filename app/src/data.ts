@@ -62,23 +62,24 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
           project_name: "Frontend Example 1 - React"
           description: "A basic frontend example using React"
 
-  - id: python-smart-contract
+  - id: tictactoe-smart-contract
     author: "Algorand Foundation"
-    title: "Python Smart Contract Example"
-    description: "A comprehensive Python-based smart contract template for the Algorand blockchain. This template demonstrates how to create, test, and deploy smart contracts using PyTeal, featuring best practices for contract development, testing frameworks, and deployment scripts. Perfect for developers looking to build secure and efficient smart contracts on Algorand."
-    image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80&w=2676&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    title: "Tic Tac Toe Smart Contract Example"
+    description: "A comprehensive Python-based smart contract template for the Algorand blockchain. This template demonstrates how to create, test, and deploy smart contracts using Algorand Python, featuring best practices for contract development, testing frameworks, and deployment scripts. Perfect for developers looking to build secure and efficient smart contracts on Algorand."
+    image: "https://images.unsplash.com/photo-1505820013142-f86a3439c5b2?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     tags:
       - python
-      - pyteal
+      - Algorand Python
       - smart-contract
     features:
-      - "PyTeal contract implementation"
+      - "Algorand Python contract implementation"
       - "Unit testing setup"
       - "Deployment scripts"
       - "Contract interaction examples"
     links:
-      demo: "https://example.com/demo/python-smart-contract"
       source: "https://github.com/lempira/template-gallery/tree/main/examples/python-smart-contract"
+      codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/python-smart-contract"
+      codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/python-smart-contract"
     templates:
       - source: "templates/python-smart-contract"
         data:
@@ -89,24 +90,27 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
           preset_name: "starter"
           deployment_language: "python"
           use_workspace: false
+      - source: "templates/smart-contract-example-tictactoe"
+        data:
+          framework_choice: "python"
 
-  - id: typescript-smart-contract
+  - id: voting-smart-contract
     author: "Algorand Foundation"
-    title: "TypeScript Smart Contract Example"
-    description: "A modern TypeScript-based smart contract template for the Algorand blockchain. This template showcases how to develop, test, and deploy smart contracts using TEALScript, featuring type-safe contract development, automated testing, and deployment utilities. Ideal for developers who prefer TypeScript's strong typing and modern development features while building Algorand smart contracts."
-    image: "https://images.unsplash.com/photo-1475776408506-9a5371e7a068?q=80&w=2558&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    title: "Voting Smart Contract Example"
+    description: "A modern TypeScript-based smart contract template for the Algorand blockchain. This template showcases how to develop, test, and deploy smart contracts using Algorand Typescript, featuring type-safe contract development, automated testing, and deployment utilities. Ideal for developers who prefer TypeScript's strong typing and modern development features while building Algorand smart contracts."
+    image: "https://images.unsplash.com/photo-1527873722743-67759f0854aa?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     tags:
       - typescript
-      - tealscript
       - smart-contract
     features:
-      - "TEALScript contract implementation"
+      - "Algorand Typescript contract implementation"
       - "TypeScript-based testing framework"
       - "Automated deployment scripts"
       - "Type-safe contract interactions"
     links:
-      demo: "https://example.com/demo/typescript-smart-contract"
       source: "https://github.com/lempira/template-gallery/tree/main/examples/typescript-smart-contract"
+      codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/typescript-smart-contract"
+      codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/typescript-smart-contract"
     templates:
       - source: "templates/typescript-smart-contract"
         data:
@@ -117,12 +121,79 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
           preset_name: "starter"
           deployment_language: "typescript"
           use_workspace: false
+      - source: "templates/smart-contract-example-voting"
+        data:
+          framework_choice: "typescript"
+
+  - id: hello-world-python-smart-contract
+    author: "Algorand Foundation"
+    title: "Hello World Smart Contract - Python"
+    description: "A beginner-friendly Python smart contract template for the Algorand blockchain. This template provides a simple introduction to smart contract development using Algorand Python, with a basic 'Hello World' implementation. Perfect for developers getting started with Algorand smart contract development and looking to understand the fundamentals of Algorand Python."
+    image: "https://images.unsplash.com/photo-1475776408506-9a5371e7a068?q=80&w=2558&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    tags:
+      - python
+      - smart-contract
+      - beginner
+    features:
+      - "Basic Algorand Python contract structure"
+      - "Simple state management"
+      - "Contract deployment example"
+      - "Basic testing setup"
+    links:
+      source: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-python"
+      codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-python"
+      codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-python"
+    templates:
+      - source: "templates/python-smart-contract"
+        data:
+          project_name: "Hello World Python Smart Contract"
+          author_name: ""
+          author_email: ""
+          contract_name: "hello_world"
+          preset_name: "starter"
+          deployment_language: "python"
+          use_workspace: false
+      - source: "templates/smart-contract-example-hello-world"
+        data:
+          framework_choice: "python"
+
+  - id: hello-world-typescript-smart-contract
+    author: "Algorand Foundation"
+    title: "Hello World Smart Contract - TypeScript"
+    description: "A beginner-friendly TypeScript smart contract template for the Algorand blockchain. This template demonstrates the basics of smart contract development using Algorand Typescript through a simple 'Hello World' implementation. Ideal for developers who want to start building Algorand smart contracts with the benefits of TypeScript's type safety and modern development features."
+    image: "https://images.unsplash.com/photo-1539192262370-c2e258ff1cf5?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    tags:
+      - typescript
+      - smart-contract
+      - beginner
+    features:
+      - "Basic Algorand Typescript contract structure"
+      - "Type-safe state management"
+      - "Contract deployment setup"
+      - "TypeScript-based testing"
+    links:
+      source: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-typescript"
+      codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-typescript"
+      codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-typescript"
+    templates:
+      - source: "templates/typescript-smart-contract"
+        data:
+          project_name: "Hello World TypeScript Smart Contract"
+          author_name: ""
+          author_email: ""
+          contract_name: "hello_world"
+          preset_name: "starter"
+          deployment_language: "typescript"
+          use_workspace: false
+      - source: "templates/smart-contract-example-hello-world"
+        data:
+          framework_choice: "typescript"
 `;
 
   try {
     const parsed = yaml.load(yamlContent) as { examples: Example[] };
     return parsed.examples;
-  } catch (error) {
+  } catch (error) { 
     console.error("Error parsing YAML:", error);
     return [];
   }

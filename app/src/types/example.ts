@@ -7,8 +7,10 @@ export interface Example {
   tags: string[];
   features: string[];
   links: {
-    demo: string;
-    source: string;
+	source: string;
+    demo?: string;
+    codespaces?: string;
+    codesandbox?: string;
   };
 }
 

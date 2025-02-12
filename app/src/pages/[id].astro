@@ -15,7 +15,6 @@ const { example } = Astro.props;
 const { id, title, description, image, tags, links, author, features } =
   example;
 const githubUrl = links.source;
-console.log({ id });
 // Add dynamic import using the title
 const { Content } = await import(`../../../examples/${id}/README.md`).catch(
   () => null
@@ -31,7 +30,57 @@ const { Content } = await import(`../../../examples/${id}/README.md`).catch(
         <Icon name="mdi:arrow-left" />
         <a href="/" class="link text-sm">Back to templates</a>
       </div>
-      <h1 class="text-3xl font-bold">{title}</h1>
+      <div class="flex justify-between gap-2">
+        <h1 class="text-3xl font-bold">{title}</h1>
+        <div class="flex gap-2">
+          {
+            links.codespaces && (
+              <a
+                href={links.codespaces}
+                target="_blank"
+                class="btn btn-sm"
+                style={{
+                  backgroundColor: "#333",
+                  color: "#fff",
+                  border: "none",
+                }}
+              >
+                <Icon name="mdi:github" />
+                <span>Codespace</span>
+              </a>
+            )
+          }
+          {
+            links.codesandbox && (
+              <a
+                href={links.codesandbox}
+                target="_blank"
+                class="btn btn-sm"
+                style={{
+                  backgroundColor: "#ffec5c",
+                  color: "#333",
+                  border: "none",
+                }}
+              >
+                <Icon name="mdi:square" />
+                <span>CodeSandbox</span>
+              </a>
+            )
+          }
+          {
+            links.demo && (
+              <a
+                href={links.demo}
+                target="_blank"
+                class="btn btn-primary btn-sm"
+              >
+                <span>Visit Demo</span>
+                <Icon name="mdi:open-in-new" />
+              </a>
+            )
+          }
+        </div>
+      </div>
       <div class="flex items-center gap-2">
         <p class="text-sm">Creator {author}</p>
         {

@@ -1,0 +1,20 @@
+# Template configuration
+_templates_suffix: ""
+_subdirectory: "{% if framework_choice == 'python' %}python_template_content{% else %}typescript_template_content{% endif %}"
+
+# User prompts
+framework_choice:
+  type: str
+  help: Choose your smart contract language
+  choices:
+    - python
+    - typescript
+
+# Additional configuration
+_message_after_copy: |
+  Template copied successfully!
+  Framework chosen: {{ framework_choice }}
+
+# Merge behavior configuration
+_skip_if_exists: []
+_force: false

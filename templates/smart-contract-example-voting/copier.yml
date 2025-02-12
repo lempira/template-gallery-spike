@@ -1,0 +1,32 @@
+# Template configuration
+_templates_suffix: ""
+_subdirectory: "typescript_template_content"
+
+# User prompts
+framework_choice:
+  type: str
+  help: Choose your frontend framework
+  choices:
+    - typescript
+
+# Additional configuration
+_message_after_copy: |
+  Template copied successfully!
+  Framework chosen: {{ framework_choice }}
+
+_tasks:
+  - command: |
+      # Remove all directories in smart_contracts except:
+      # - directories starting with '_'
+      # - the 'smart_contracts' directory itself
+      # - the 'voting' directory
+      find smart_contracts -maxdepth 1 -type d \
+        ! -name '_*' \
+        ! -name 'smart_contracts' \
+        ! -name 'voting' \
+        -exec rm -rf {} +
+
+
+# Merge behavior configuration
+_skip_if_exists: []
+_force: false

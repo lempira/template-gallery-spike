@@ -1,0 +1,57 @@
+name: Publish Demo Sites
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Parse examples and build frontends
+        run: |
+          # Create a directory for all builds
+          mkdir -p dist
+          
+          # Read examples.yml and filter frontend examples
+          FRONTEND_EXAMPLES=$(yq e '.examples[] | select(.type == "frontend")' examples/examples.yml)
+          
+          # Loop through each frontend example
+          echo "$FRONTEND_EXAMPLES" | while read -r example; do
+            NAME=$(echo "$example" | yq e '.name' -)
+            PATH=$(echo "$example" | yq e '.path' -)
+            
+            echo "Building frontend example: $NAME"
+            
+            # Navigate to example directory and build
+            cd "$PATH"
+            npm ci
+            npm run build
+            
+            # Move build output to dist directory
+            mkdir -p "../../dist/$NAME"
+            mv dist/* "../../dist/$NAME/"
+            
+            # Return to root
+            cd ../../
+          done
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
