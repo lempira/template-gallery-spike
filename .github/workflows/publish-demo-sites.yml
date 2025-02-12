@@ -56,7 +56,6 @@ jobs:
             
             # Add BASE_PATH environment variable for the build
             export BASE_PATH="/${REPO_NAME}/${ID}"
-            echo "BASE_PATH: $BASE_PATH"
             npm ci
             npm run build
             

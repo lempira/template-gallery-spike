@@ -1,11 +1,10 @@
-/// <reference types="vite/client" />
+import { loadEnv } from "vite";
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// Get BASE_PATH from environment variable, fallback to empty string
-const basePath = import.meta.env.BASE_PATH || ''
+const { BASE_PATH } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig({
-  base: basePath,
+  base: BASE_PATH,
 });

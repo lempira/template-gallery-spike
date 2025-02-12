@@ -7,6 +7,7 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
 
   const yamlContent = `examples:
   - id: "frontend-example-1-astro"
+    type: "frontend"
     author: "Algorand Foundation"
     title: "Frontend Example 1 - Astro"
     description: "A modern web application template built with Astro and TypeScript, featuring file-based routing and component-based architecture. This template provides a clean starting point for building fast, SEO-friendly static websites with excellent developer experience. Perfect for blogs, documentation sites, or any content-focused web application."
@@ -19,8 +20,8 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
       - "Component-based architecture"
       - "Basic Astro setup"
     links:
-      demo: "https://example.com/demo/frontend-example-1-astro"
-      source: "https://github.com/lempira/template-gallery/tree/main/examples/frontend-example-1-astro"
+      demo: "https://lempira.github.io/template-gallery-spike/frontend-example-1-astro/"
+      source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/frontend-example-1-astro"
     templates:
       - source: "templates/astro-ts"
         data:
@@ -34,6 +35,7 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
           framework_choice: "astro"
 
   - id: "frontend-example-1-react"
+    type: "frontend"
     author: "Algorand Foundation"
     title: "Frontend Example 1 - React"
     description: "A modern web application template built with React and TypeScript, featuring component-based architecture and CSS modules support. This template provides a solid foundation for building interactive user interfaces with excellent developer experience. Perfect for single-page applications, dynamic web apps, or any frontend project requiring robust state management and component reusability."
@@ -46,8 +48,8 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
       - "Basic React setup"
       - "CSS modules support"
     links:
-      demo: "https://example.com/demo/frontend-example-1-react"
-      source: "https://github.com/lempira/template-gallery/tree/main/examples/frontend-example-1-react"
+      demo: "https://lempira.github.io/template-gallery-spike/frontend-example-1-react/"
+      source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/frontend-example-1-react"
     templates:
       - source: "templates/vite-react-ts"
         data:
@@ -59,10 +61,9 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
       - source: "templates/frontend-example-1"
         data:
           framework_choice: "react"
-          project_name: "Frontend Example 1 - React"
-          description: "A basic frontend example using React"
 
   - id: tictactoe-smart-contract
+    type: "smart-contract"
     author: "Algorand Foundation"
     title: "Tic Tac Toe Smart Contract Example"
     description: "A comprehensive Python-based smart contract template for the Algorand blockchain. This template demonstrates how to create, test, and deploy smart contracts using Algorand Python, featuring best practices for contract development, testing frameworks, and deployment scripts. Perfect for developers looking to build secure and efficient smart contracts on Algorand."
@@ -77,7 +78,7 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
       - "Deployment scripts"
       - "Contract interaction examples"
     links:
-      source: "https://github.com/lempira/template-gallery/tree/main/examples/python-smart-contract"
+      source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/tictactoe-smart-contract"
       codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/python-smart-contract"
       codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/python-smart-contract"
     templates:
@@ -95,6 +96,7 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
           framework_choice: "python"
 
   - id: voting-smart-contract
+    type: "smart-contract"
     author: "Algorand Foundation"
     title: "Voting Smart Contract Example"
     description: "A modern TypeScript-based smart contract template for the Algorand blockchain. This template showcases how to develop, test, and deploy smart contracts using Algorand Typescript, featuring type-safe contract development, automated testing, and deployment utilities. Ideal for developers who prefer TypeScript's strong typing and modern development features while building Algorand smart contracts."
@@ -108,7 +110,7 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
       - "Automated deployment scripts"
       - "Type-safe contract interactions"
     links:
-      source: "https://github.com/lempira/template-gallery/tree/main/examples/typescript-smart-contract"
+      source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/voting-smart-contract"
       codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/typescript-smart-contract"
       codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/typescript-smart-contract"
     templates:
@@ -126,6 +128,7 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
           framework_choice: "typescript"
 
   - id: hello-world-python-smart-contract
+    type: "smart-contract"
     author: "Algorand Foundation"
     title: "Hello World Smart Contract - Python"
     description: "A beginner-friendly Python smart contract template for the Algorand blockchain. This template provides a simple introduction to smart contract development using Algorand Python, with a basic 'Hello World' implementation. Perfect for developers getting started with Algorand smart contract development and looking to understand the fundamentals of Algorand Python."
@@ -140,7 +143,7 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
       - "Contract deployment example"
       - "Basic testing setup"
     links:
-      source: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-python"
+      source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/hello-world-python-smart-contract"
       codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-python"
       codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-python"
     templates:
@@ -158,6 +161,7 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
           framework_choice: "python"
 
   - id: hello-world-typescript-smart-contract
+    type: "smart-contract"
     author: "Algorand Foundation"
     title: "Hello World Smart Contract - TypeScript"
     description: "A beginner-friendly TypeScript smart contract template for the Algorand blockchain. This template demonstrates the basics of smart contract development using Algorand Typescript through a simple 'Hello World' implementation. Ideal for developers who want to start building Algorand smart contracts with the benefits of TypeScript's type safety and modern development features."
@@ -172,7 +176,7 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
       - "Contract deployment setup"
       - "TypeScript-based testing"
     links:
-      source: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-typescript"
+      source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/hello-world-typescript-smart-contract"
       codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-typescript"
       codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-typescript"
     templates:

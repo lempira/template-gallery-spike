@@ -13,8 +13,8 @@ examples:
       - "Component-based architecture"
       - "Basic Astro setup"
     links:
-      demo: "https://example.com/demo/frontend-example-1-astro"
-      source: "https://github.com/lempira/template-gallery/tree/main/examples/frontend-example-1-astro"
+      demo: "https://lempira.github.io/template-gallery-spike/frontend-example-1-astro/"
+      source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/frontend-example-1-astro"
     templates:
       - source: "templates/astro-ts"
         data:
@@ -41,8 +41,8 @@ examples:
       - "Basic React setup"
       - "CSS modules support"
     links:
-      demo: "https://example.com/demo/frontend-example-1-react"
-      source: "https://github.com/lempira/template-gallery/tree/main/examples/frontend-example-1-react"
+      demo: "https://lempira.github.io/template-gallery-spike/frontend-example-1-react/"
+      source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/frontend-example-1-react"
     templates:
       - source: "templates/vite-react-ts"
         data:
@@ -71,7 +71,7 @@ examples:
       - "Deployment scripts"
       - "Contract interaction examples"
     links:
-      source: "https://github.com/lempira/template-gallery/tree/main/examples/python-smart-contract"
+      source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/tictactoe-smart-contract"
       codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/python-smart-contract"
       codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/python-smart-contract"
     templates:
@@ -103,7 +103,7 @@ examples:
       - "Automated deployment scripts"
       - "Type-safe contract interactions"
     links:
-      source: "https://github.com/lempira/template-gallery/tree/main/examples/typescript-smart-contract"
+      source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/voting-smart-contract"
       codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/typescript-smart-contract"
       codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/typescript-smart-contract"
     templates:
@@ -136,7 +136,7 @@ examples:
       - "Contract deployment example"
       - "Basic testing setup"
     links:
-      source: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-python"
+      source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/hello-world-python-smart-contract"
       codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-python"
       codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-python"
     templates:
@@ -169,7 +169,7 @@ examples:
       - "Contract deployment setup"
       - "TypeScript-based testing"
     links:
-      source: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-typescript"
+      source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/hello-world-typescript-smart-contract"
       codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-typescript"
       codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-typescript"
     templates:
