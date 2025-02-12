@@ -27,7 +27,6 @@ jobs:
           npm --version
 
       - name: Parse examples and build frontends
-        shell: bash
         run: |
           # # Debug PATH and npm location
           # echo "PATH=$PATH"
@@ -46,16 +45,12 @@ jobs:
           # Process each frontend example as a complete object
           echo "$FRONTEND_EXAMPLES" | yq e -o=json -I=0 '.' - | jq -c '.' | while read -r example; do
             ID=$(echo "$example" | jq -r '.id')
-            PATH=examples/$ID
+            REPO_PATH=examples/$ID
             
-            echo "Building frontend example: $ID with path $PATH"
+            echo "Building frontend example: $ID with path $REPO_PATH"
             
             # Navigate to example directory and build
-            cd "$PATH" || exit 1
-            echo "Current directory:"
-            pwd
-            echo "directory contents:"
-            /bin/ls -la
+            cd "$REPO_PATH" || exit 1
             npm ci
             npm run build
             
@@ -66,9 +61,18 @@ jobs:
             # Return to root
             cd ../../
           done
+          echo "Current directory:"
+          pwd
+          ls -la
+          echo "contents of dist:"
+          ls -la dist
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: actions/deploy-pages@v4
         with:
-          folder: dist
-          branch: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}
