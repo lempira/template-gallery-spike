@@ -58,7 +58,7 @@ jobs:
             export BASE_PATH="/${REPO_NAME}/${ID}"
             echo "BASE_PATH: $BASE_PATH"
             npm ci
-            BASE_PATH=$BASE_PATH npm run build
+            npm run build
             
             # Move build output to dist directory
             mkdir -p "../../dist/$ID"
