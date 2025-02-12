@@ -28,14 +28,6 @@ jobs:
         with:
           node-version: '20' # You can specify any version you need
 
-      - name: Verify Node.js and npm installation
-        run: |
-          echo "Node.js version:"
-          node --version
-          echo "npm version:"
-          which npm
-          npm --version
-
       - name: Parse examples and build frontends
         run: |
           # # Debug PATH and npm location
@@ -45,9 +37,9 @@ jobs:
           
           # Create a directory for all builds
           mkdir -p dist
-          # Echo current directory and contents
-          echo "Current directory:"
-          pwd
+          
+          # Get repository name for base path
+          REPO_NAME=${GITHUB_REPOSITORY#*/}
           
           # Read examples.yml and filter frontend examples
           FRONTEND_EXAMPLES=$(yq e '.examples[] | select(.type == "frontend")' examples/examples.yml)
@@ -61,6 +53,9 @@ jobs:
             
             # Navigate to example directory and build
             cd "$REPO_PATH" || exit 1
+            
+            # Add BASE_URL environment variable for the build
+            export BASE_URL="/${REPO_NAME}/${ID}"
             npm ci
             npm run build
             
