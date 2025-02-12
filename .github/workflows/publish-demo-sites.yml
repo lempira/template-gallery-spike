@@ -46,7 +46,6 @@ jobs:
           
           # Process each frontend example as a complete object
           echo "$FRONTEND_EXAMPLES" | yq e -o=json -I=0 '.' - | jq -r '.[] | @json' | while read -r example; do
-            echo "example: $example"
             ID=$(echo "$example" | jq -r '.id')
             REPO_PATH=examples/$ID
             
@@ -59,7 +58,7 @@ jobs:
             export BASE_PATH="/${REPO_NAME}/${ID}"
             echo "BASE_PATH: $BASE_PATH"
             npm ci
-            npm run build
+            BASE_PATH=$BASE_PATH npm run build
             
             # Move build output to dist directory
             mkdir -p "../../dist/$ID"
