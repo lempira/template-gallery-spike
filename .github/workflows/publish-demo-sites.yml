@@ -71,40 +71,9 @@ jobs:
             # Return to root
             cd ../../
           done
-      # Create a top-level index.html with links to all demos
-      cat > dist/index.html << 'EOL'
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Template Gallery Demo Sites</title>
-          <style>
-              body {
-                  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-                  max-width: 800px;
-                  margin: 2rem auto;
-                  padding: 0 1rem;
-              }
-              h1 { color: #333; }
-              ul { list-style-type: none; padding: 0; }
-              li { margin: 1rem 0; }
-              a {
-                  color: #0066cc;
-                  text-decoration: none;
-              }
-              a:hover { text-decoration: underline; }
-          </style>
-      </head>
-      <body>
-          <h1>Template Gallery Demo Sites</h1>
-          <ul>
-              <li><a href="frontend-example-1-astro/">Frontend Example 1 - Astro</a></li>
-              <li><a href="frontend-example-1-react/">Frontend Example 1 - React</a></li>
-          </ul>
-      </body>
-      </html>
-      EOL
+
+          # Copy the index.html from examples to dist
+          cp examples/index.html dist/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
