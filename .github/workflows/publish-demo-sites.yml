@@ -42,10 +42,11 @@ jobs:
           REPO_NAME=${GITHUB_REPOSITORY#*/}
           
           # Read examples.yml and filter frontend examples
-          FRONTEND_EXAMPLES=$(yq e '.examples[] | select(.type == "frontend")' examples/examples.yml)
+          FRONTEND_EXAMPLES=$(yq e '.examples | map(select(.type == "frontend"))' examples/examples.yml)
           
           # Process each frontend example as a complete object
-          echo "$FRONTEND_EXAMPLES" | yq e -o=json -I=0 '.' - | jq -c '.' | while read -r example; do
+          echo "$FRONTEND_EXAMPLES" | yq e -o=json -I=0 '.' - | jq -r '.[] | @json' | while read -r example; do
+            echo "example: $example"
             ID=$(echo "$example" | jq -r '.id')
             REPO_PATH=examples/$ID
             
