@@ -52,12 +52,3 @@ _exclude:
 # Update package.json with project info
 _jinja_extensions:
   - jinja2_time.TimeExtension
-# _migrations:
-#   # {{ _copier_conf.src_path }} points to the path where the template was
-#   # cloned, so it can be helpful to run migration scripts stored there.
-#   - version: v1.0.0
-#     command: "echo 'Starting template generation...'"
-#     when: "{{ _stage == 'before' }}"
-#   - version: v1.0.0
-#     command: "echo 'Template generated successfully!'"
-#     when: "{{ _stage == 'after' }}"

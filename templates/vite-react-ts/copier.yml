@@ -34,14 +34,14 @@ install_dependencies:
 _subdirectory: template_content
 
 # Tasks to run after generating the project
-_tasks:
-  - condition: "{{ git_init }}"
-    command: git init
-    cwd: "{{ _copier_conf.dst_path }}"
+# _tasks:
+#   - condition: "{{ git_init }}"
+#     command: git init
+#     cwd: "{{ _copier_conf.dst_path }}"
 
-  - condition: "{{ install_dependencies }}"
-    command: npm install
-    cwd: "{{ _copier_conf.dst_path }}"
+#   - condition: "{{ install_dependencies }}"
+#     command: npm install
+#     cwd: "{{ _copier_conf.dst_path }}"
 
 # Template configuration
 _exclude:

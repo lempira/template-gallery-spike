@@ -1,4 +1,4 @@
-# Frontend Example 1 - Astro
+# Frontend Example 1 - Astro README
 
 A modern web application template that provides a clean starting point for building fast, SEO-friendly websites using Astro.
 

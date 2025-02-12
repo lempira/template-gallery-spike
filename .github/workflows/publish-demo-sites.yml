@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: '20' # You can specify any version you need
 
-      - name: Parse examples and build frontends
+      - name: Parse examples and build frontends        
         run: |
           # # Debug PATH and npm location
           # echo "PATH=$PATH"
@@ -54,8 +54,9 @@ jobs:
             # Navigate to example directory and build
             cd "$REPO_PATH" || exit 1
             
-            # Add BASE_URL environment variable for the build
-            export BASE_URL="/${REPO_NAME}/${ID}"
+            # Add BASE_PATH environment variable for the build
+            export BASE_PATH="/${REPO_NAME}/${ID}"
+            echo "BASE_PATH: $BASE_PATH"
             npm ci
             npm run build
             
