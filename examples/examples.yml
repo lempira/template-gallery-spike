@@ -54,8 +54,6 @@ examples:
       - source: "templates/frontend-example-1"
         data:
           framework_choice: "react"
-          project_name: "Frontend Example 1 - React"
-          description: "A basic frontend example using React"
 
   - id: tictactoe-smart-contract
     type: "smart-contract"
