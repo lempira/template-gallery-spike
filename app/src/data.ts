@@ -21,9 +21,10 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
       - "Basic Astro setup"
     links:
       demo: "https://lempira.github.io/template-gallery-spike/frontend-example-1-astro/"
+      codesandbox: "https://githubbox.com/lempira/template-gallery-spike/tree/main/examples/frontend-example-1-astro"
       source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/frontend-example-1-astro"
     templates:
-      - source: "templates/astro-ts"
+      - source: "templates/base-templates/astro-ts"
         data:
           project_name: "Frontend Example 1 - Astro"
           description: "A basic frontend example using Astro"
@@ -49,9 +50,10 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
       - "CSS modules support"
     links:
       demo: "https://lempira.github.io/template-gallery-spike/frontend-example-1-react/"
+      codesandbox: "https://githubbox.com/lempira/template-gallery-spike/tree/main/examples/frontend-example-1-react"
       source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/frontend-example-1-react"
     templates:
-      - source: "templates/vite-react-ts"
+      - source: "templates/base-templates/vite-react-ts"
         data:
           project_name: "Frontend Example 1 - React"
           description: "A basic frontend example using React"
@@ -79,10 +81,9 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
       - "Contract interaction examples"
     links:
       source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/tictactoe-smart-contract"
-      codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/python-smart-contract"
-      codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/python-smart-contract"
+      codespaces: "https://codespaces.new/lempira/template-gallery-spike/tree/examples/tictactoe-smart-contract"
     templates:
-      - source: "templates/python-smart-contract"
+      - source: "templates/base-templates/python-smart-contract"
         data:
           project_name: "Python Smart Contract Example"
           author_name: ""
@@ -111,10 +112,9 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
       - "Type-safe contract interactions"
     links:
       source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/voting-smart-contract"
-      codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/typescript-smart-contract"
-      codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/typescript-smart-contract"
+      codespaces: "https://codespaces.new/lempira/template-gallery/tree/main/examples/typescript-smart-contract"
     templates:
-      - source: "templates/typescript-smart-contract"
+      - source: "templates/base-templates/typescript-smart-contract"
         data:
           project_name: "TypeScript Smart Contract Example"
           author_name: ""
@@ -144,10 +144,9 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
       - "Basic testing setup"
     links:
       source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/hello-world-python-smart-contract"
-      codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-python"
-      codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-python"
+      codespaces: "https://codespaces.new/lempira/template-gallery/tree/main/examples/hello-world-python"
     templates:
-      - source: "templates/python-smart-contract"
+      - source: "templates/base-templates/python-smart-contract"
         data:
           project_name: "Hello World Python Smart Contract"
           author_name: ""
@@ -177,10 +176,9 @@ export async function fetchExamplesYaml(): Promise<Example[]> {
       - "TypeScript-based testing"
     links:
       source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/hello-world-typescript-smart-contract"
-      codespaces: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-typescript"
-      codesandbox: "https://github.com/lempira/template-gallery/tree/main/examples/hello-world-typescript"
+      codespaces: "https://codespaces.new/lempira/template-gallery/tree/main/examples/hello-world-typescript"
     templates:
-      - source: "templates/typescript-smart-contract"
+      - source: "templates/base-templates/typescript-smart-contract"
         data:
           project_name: "Hello World TypeScript Smart Contract"
           author_name: ""
