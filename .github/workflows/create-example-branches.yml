@@ -7,6 +7,10 @@ on:
     paths:
       - 'examples/**'
 
+# Add these permissions
+permissions:
+  contents: write
+
 jobs:
   create-branches:
     runs-on: ubuntu-latest
