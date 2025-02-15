@@ -1,5 +1,5 @@
 {
-  "name": "astro-react-ts",
+  "name": "frontend-astro",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,10 +10,7 @@
     "test": "vitest"
   },
   "dependencies": {
-<<<<<<< Updated upstream
-=======
     "@algorandfoundation/algokit-utils": "^8.0.3",
->>>>>>> Stashed changes
     "astro": "^5.2.5"
   },
   "devDependencies": {

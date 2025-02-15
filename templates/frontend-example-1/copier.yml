@@ -10,11 +10,15 @@ framework_choice:
     - astro
     - react
 
+_tasks:
+  - name: Merge dependencies
+    command: python ../../scripts/merge_dependencies.py --source "{{ _copier_conf.src_path }}/{% if framework_choice == 'astro' %}astro_template_content{% else %}react_template_content{% endif %}" --destination "{{ _copier_conf.dst_path }}"
+
 # Additional configuration
 _message_after_copy: |
   Template copied successfully!
   Framework chosen: {{ framework_choice }}
 
 # Merge behavior configuration
-_skip_if_exists: []
+_skip_if_exists: ['package.json']
 _force: false

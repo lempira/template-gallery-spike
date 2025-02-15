@@ -1,0 +1,100 @@
+_subdirectory: ./template_content
+
+# questions
+contract_template:
+  type: str
+  help: Choose the contract template.
+  when: false
+  choices:
+    Python: python
+    TealScript: tealscript
+    Beaker: beaker
+  default: python
+
+# project_name should never get prompted, AlgoKit should always pass it by convention
+project_name:
+  type: str
+  help: Name for this project.
+  placeholder: 'algorand-frontend'
+  default: 'myproject'
+
+# Auto determined by algokit-cli from v1.11.3 to allow execution of python script
+# in binary mode.
+python_path:
+  type: str
+  help: Path to the sys.executable.
+  when: false
+
+preset_name:
+  type: str
+  help: Name of the template preset to use.
+  choices:
+    'Starter - for a simpler starting point ideal for prototyping': 'starter'
+    'Production - for confidently deploying to MainNet and/or more complex projects': 'production'
+    'Custom - for tailoring the template output to your needs': 'custom'
+  default: 'starter'
+
+contract_name:
+  type: str
+  help: Name of the default smart contract app.
+  placeholder: '{{ "HelloWorld" if contract_template == "tealscript" else "hello_world" }}'
+  default: '{{ "HelloWorld" if contract_template == "tealscript" else "hello_world" }}'
+  validator: >-
+    {% if contract_template == 'tealscript' %}
+      {% if not (contract_name | regex_search('^[A-Z][a-zA-Z]*(?:[A-Z][a-zA-Z]*)*$')) %}
+        contract_name must be formatted in PascalCase.
+      {% endif %}
+    {% else %}
+      {% if not (contract_name | regex_search('^[a-z]+(?:_[a-z]+)*$')) %}
+        contract_name must be formatted in snake case.
+      {% endif %}
+    {% endif %}
+
+author_name:
+  type: str
+  help: Package author name
+  placeholder: 'Your-Name'
+  default: 'Your-Name'
+
+author_email:
+  type: str
+  help: Package author email
+  placeholder: 'your@email.tld'
+  default: 'your@email.tld'
+
+deployment_language:
+  type: str
+  help: Pick language for deployment scripts in the backend?
+  when: "{{ contract_template != 'tealscript' }}"
+  choices:
+    Python: 'python'
+    TypeScript: 'typescript'
+  default: 'python'
+
+ide_vscode:
+  type: bool
+  help: Do you want to add VSCode configuration?
+  when: "{{ preset_name == 'custom' }}"
+  default: yes
+
+ide_jetbrains:
+  type: bool
+  help: Do you want to add JetBrains configuration (`frontend` optimized for WebStorm, `backend` for PyCharm CE)?
+  when: "{{ preset_name == 'custom' }}"
+  default: no
+
+use_github_actions:
+  type: bool
+  help: Do you want to include Github Actions workflows for build and testnet deployment?
+  when: "{{ preset_name == 'custom' }}"
+  default: "{{ 'yes' if preset_name == 'production' else 'no' }}"
+
+cloud_provider:
+  type: str
+  help: Pick your website hosting provider for continuous delivery
+  when: '{{ use_github_actions != false }}'
+  choices:
+    Netlify: 'netlify'
+    Vercel: 'vercel'
+    Skip CD setup: 'none'
+  default: "{{ 'netlify' if preset_name == 'production' else 'none' }}"

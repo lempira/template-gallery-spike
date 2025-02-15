@@ -25,8 +25,10 @@ _tasks:
         ! -name 'smart_contracts' \
         ! -name 'tictactoe' \
         -exec rm -rf {} +
+  - name: Merge dependencies
+    command: python ../../scripts/merge_dependencies.py --source "{{ _copier_conf.src_path }}/python_template_content" --destination "{{ _copier_conf.dst_path }}"
 
 
 # Merge behavior configuration
-_skip_if_exists: []
+_skip_if_exists: ['pyproject.toml']
 _force: false

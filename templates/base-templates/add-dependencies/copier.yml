@@ -1,0 +1,12 @@
+# Copier configuration for dependency merging
+_tasks:
+  - name: Merge dependencies
+    command: python ../../scripts/merge_dependencies.py --source "{{ _copier_conf.src_path }}" --destination "{{ _copier_conf.dst_path }}" --overwrite_existing_only false
+
+_exclude:
+  - "*"  # Exclude all files from being copied
+
+_templates_suffix: ""  # No template processing needed
+
+_skip_if_exists:
+  - "*"  # Skip if any files exist

@@ -1,0 +1,9 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_src_path: /Users/dreds/Documents/projects/template-gallery-spike/templates/base-templates/python-smart-contract
+author_email: ''
+author_name: ''
+contract_name: hello_world
+deployment_language: python
+preset_name: starter
+project_name: Python Smart Contract Example
+

@@ -1,5 +1,6 @@
 export interface Example {
   id: string;
+  type: "smart-contract" | "dapp" | "frontend";
   author: string;
   title: string;
   description: string;

@@ -17,7 +17,7 @@ examples:
       codesandbox: "https://githubbox.com/lempira/template-gallery-spike/tree/main/examples/frontend-example-1-astro"
       source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/frontend-example-1-astro"
     templates:
-      - source: "templates/base-templates/astro-ts"
+      - source: "templates/base-templates/frontend-astro"
         data:
           project_name: "Frontend Example 1 - Astro"
           description: "A basic frontend example using Astro"
@@ -27,6 +27,8 @@ examples:
       - source: "templates/frontend-example-1"
         data:
           framework_choice: "astro"
+      - source: "templates/base-templates/add-dependencies"
+        
 
   - id: "frontend-example-1-react"
     type: "frontend"
@@ -46,7 +48,7 @@ examples:
       codesandbox: "https://githubbox.com/lempira/template-gallery-spike/tree/main/examples/frontend-example-1-react"
       source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/frontend-example-1-react"
     templates:
-      - source: "templates/base-templates/vite-react-ts"
+      - source: "templates/base-templates/frontend-vite-react"
         data:
           project_name: "Frontend Example 1 - React"
           description: "A basic frontend example using React"
@@ -56,6 +58,7 @@ examples:
       - source: "templates/frontend-example-1"
         data:
           framework_choice: "react"
+      - source: "templates/base-templates/add-dependencies"
 
   - id: tictactoe-smart-contract
     type: "smart-contract"
@@ -79,8 +82,8 @@ examples:
       - source: "templates/base-templates/python-smart-contract"
         data:
           project_name: "Python Smart Contract Example"
-          author_name: ""
-          author_email: ""
+          author_name: "Your Name"
+          author_email: "your@email.tld"
           contract_name: "hello_world"
           preset_name: "starter"
           deployment_language: "python"
@@ -89,6 +92,7 @@ examples:
       - source: "templates/smart-contract-example-tictactoe"
         data:
           framework_choice: "python"
+      - source: "templates/base-templates/add-dependencies"
 
   - id: voting-smart-contract
     type: "smart-contract"
@@ -106,7 +110,7 @@ examples:
       - "Type-safe contract interactions"
     links:
       source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/voting-smart-contract"
-      codespaces: "https://codespaces.new/lempira/template-gallery/tree/main/examples/typescript-smart-contract"
+      codespaces: "https://codespaces.new/lempira/template-gallery-spike/tree/examples/voting-smart-contract"
     templates:
       - source: "templates/base-templates/typescript-smart-contract"
         data:
@@ -139,7 +143,7 @@ examples:
       - "Basic testing setup"
     links:
       source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/hello-world-python-smart-contract"
-      codespaces: "https://codespaces.new/lempira/template-gallery/tree/main/examples/hello-world-python"
+      codespaces: "https://codespaces.new/lempira/template-gallery-spike/tree/examples/hello-world-python-smart-contract"
     templates:
       - source: "templates/base-templates/python-smart-contract"
         data:
@@ -172,7 +176,7 @@ examples:
       - "TypeScript-based testing"
     links:
       source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/hello-world-typescript-smart-contract"
-      codespaces: "https://codespaces.new/lempira/template-gallery/tree/main/examples/hello-world-typescript"
+      codespaces: "https://codespaces.new/lempira/template-gallery-spike/tree/examples/hello-world-typescript-smart-contract"
     templates:
       - source: "templates/base-templates/typescript-smart-contract"
         data:
@@ -187,3 +191,57 @@ examples:
       - source: "templates/smart-contract-example-hello-world"
         data:
           framework_choice: "typescript"
+
+  - id: "dapp-basic"
+    type: "dapp"
+    author: "Algorand Foundation"
+    title: "DApp Basic"
+    description: "A comprehensive fullstack template combining a Python smart contract with a React frontend. This template demonstrates how to build and integrate a simple counter smart contract with a modern React user interface. Perfect for developers looking to understand the full development cycle of a decentralized application on Algorand."
+    image: "https://images.unsplash.com/photo-1539477857993-860599c2e840?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    tags:
+      - python
+      - react
+      - typescript
+      - fullstack
+    features:
+      - "Python smart contract implementation"
+      - "React frontend with TypeScript"
+      - "Contract interaction examples"
+      - "Full integration setup"
+    links:
+      source: "https://github.com/lempira/template-gallery-spike/tree/main/examples/dapp-basic"
+      codespaces: "https://codespaces.new/lempira/template-gallery-spike/tree/examples/dapp-basic"
+    templates:
+      - source: "templates/base-templates/dapp-template"
+        data:
+          project_name: "dApp-basic"
+          author_name: ""
+          author_email: ""
+          contract_name: "counter"
+          preset_name: "starter"
+          deployment_language: "python"
+          use_workspace: true
+          contract_template: "python"
+          python_path: ""
+          ide_vscode: true
+          ide_jetbrains: false
+          use_github_actions: false
+          cloud_provider: "none"
+      - source: "templates/base-templates/python-smart-contract"
+        destination: "examples/dapp-basic/projects/dApp-basic-contracts"
+        data:
+          project_name: "Python Smart Contract Example"
+          author_name: ""
+          author_email: ""
+          contract_name: "hello_world"
+          preset_name: "starter"
+          deployment_language: "python"
+          use_workspace: false
+      - source: "templates/base-templates/frontend-vite-react"
+        destination: "examples/dapp-basic/projects/dApp-basic-frontend"
+        data:
+          project_name: "Counter Frontend"
+          description: "React frontend for the counter smart contract"
+          author: ""
+          git_init: false
+          install_dependencies: false
