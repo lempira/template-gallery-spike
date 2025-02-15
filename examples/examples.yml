@@ -85,10 +85,7 @@ examples:
           preset_name: "starter"
           deployment_language: "python"
           use_workspace: false
-<<<<<<< Updated upstream
-=======
           use_python_pytest: true
->>>>>>> Stashed changes
       - source: "templates/smart-contract-example-tictactoe"
         data:
           framework_choice: "python"
