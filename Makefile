@@ -3,3 +3,6 @@ clean-examples:
 
 create-examples:
 	python ./scripts/create_examples.py
+
+validate-example-configuration:
+	python ./scripts/validate_configuration.py
