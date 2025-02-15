@@ -6,9 +6,17 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "vitest"
   },
   "dependencies": {
+<<<<<<< Updated upstream
+=======
+    "@algorandfoundation/algokit-utils": "^8.0.3",
+>>>>>>> Stashed changes
     "astro": "^5.2.5"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.5"
   }
 }

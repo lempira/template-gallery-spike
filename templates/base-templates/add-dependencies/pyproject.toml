@@ -1,0 +1,2 @@
+[tool.poetry.dependencies]
+algokit-utils = "2.4.0"

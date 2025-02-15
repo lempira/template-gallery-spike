@@ -23,6 +23,16 @@
       "line": 32
     },
     {
+      "file": "smart_contracts/hello_world/contact.spec.ts",
+      "description": "The default tests provided demonstrate an example of setting up in-memory fast unit tests with the Algorand TypeScript testing library that mocks AVM functionality.",
+      "line": 5
+    },
+    {
+      "file": "smart_contracts/hello_world/contact.e2e.spec.ts",
+      "description": "The default tests provided demonstrate an example of setting up an end-to-end test with fixtures, and testing smart contract calls against a LocalNet network via an AlgoKit typed client.",
+      "line": 7
+    },
+    {
       "file": ".env.localnet.template",
       "description": "Environment files are a crucial mechanism that allows you to set up the [`algokit deploy`](https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/deploy.md) feature to simplify deploying your contracts in CI/CD environments (please note we still recommend careful evaluation when it comes to deployment to MainNet). Clone the file and remove the `.template` suffix to apply the changes to deployment scripts and launch configurations. The network prefix `localnet|testnet|mainnet` is primarily optimized for `algokit deploy`. The order of loading the variables is `.env.{network}` < `.env`.",
       "line": 2

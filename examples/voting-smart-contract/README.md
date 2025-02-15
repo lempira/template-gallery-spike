@@ -100,6 +100,7 @@ This project makes use of Algorand TypeScript to build Algorand smart contracts.
 - [NPM](https://www.npmjs.com/): TypeScript packaging and dependency management.
 - [TypeScript](https://www.typescriptlang.org/): Strongly typed programming language that builds on JavaScript
 - [ts-node-dev](https://github.com/wclr/ts-node-dev): TypeScript development execution environment
+- [vitest](https://vitest.dev/): Automated testing.
 
 
 It has also been configured to have a productive dev experience out of the box in [VS Code](https://code.visualstudio.com/), see the [.vscode](./.vscode) folder.

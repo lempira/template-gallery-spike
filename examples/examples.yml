@@ -85,6 +85,10 @@ examples:
           preset_name: "starter"
           deployment_language: "python"
           use_workspace: false
+<<<<<<< Updated upstream
+=======
+          use_python_pytest: true
+>>>>>>> Stashed changes
       - source: "templates/smart-contract-example-tictactoe"
         data:
           framework_choice: "python"
@@ -116,6 +120,7 @@ examples:
           preset_name: "starter"
           deployment_language: "typescript"
           use_workspace: false
+          use_vitest: true
       - source: "templates/smart-contract-example-voting"
         data:
           framework_choice: "typescript"
@@ -148,6 +153,7 @@ examples:
           preset_name: "starter"
           deployment_language: "python"
           use_workspace: false
+          use_python_pytest: true
       - source: "templates/smart-contract-example-hello-world"
         data:
           framework_choice: "python"
@@ -180,6 +186,7 @@ examples:
           preset_name: "starter"
           deployment_language: "typescript"
           use_workspace: false
+          use_vitest: true
       - source: "templates/smart-contract-example-hello-world"
         data:
           framework_choice: "typescript"

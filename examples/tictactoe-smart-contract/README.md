@@ -97,5 +97,9 @@ This project makes use of Algorand Python to build Algorand smart contracts. The
 - [Algorand Python](https://github.com/algorandfoundation/puya) - A semantically and syntactically compatible, typed Python language that works with standard Python tooling and allows you to express smart contracts (apps) and smart signatures (logic signatures) for deployment on the Algorand Virtual Machine (AVM); [docs](https://github.com/algorandfoundation/puya), [examples](https://github.com/algorandfoundation/puya/tree/main/examples)
 - [AlgoKit Utils](https://github.com/algorandfoundation/algokit-utils-py) - A set of core Algorand utilities that make it easier to build solutions on Algorand.
 - [Poetry](https://python-poetry.org/): Python packaging and dependency management.
+<<<<<<< Updated upstream
+=======
+- [pytest](https://docs.pytest.org/): Automated testing.
+>>>>>>> Stashed changes
 It has also been configured to have a productive dev experience out of the box in [VS Code](https://code.visualstudio.com/), see the [.vscode](./.vscode) folder.
 
