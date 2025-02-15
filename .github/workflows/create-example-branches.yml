@@ -46,7 +46,6 @@ jobs:
               # Create new branch
               git checkout -b $branch_name
             fi
-            ls -la
             
             # First, move the target directory to temp to preserve it
             mkdir -p temp

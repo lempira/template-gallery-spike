@@ -7,24 +7,9 @@ const examples = await fetchExamplesYaml();
 ---
 
 <Layout title="Example Gallery">
-  <main>
-    <h1>Example Gallery</h1>
-    <div class="gallery">
+  <main class="pt-[64px]">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8 p-8">
       {examples.map((example) => <ExampleCard example={example} />)}
     </div>
   </main>
 </Layout>
-
-<style>
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-  }
-
-  h1 {
-    text-align: center;
-    margin: 2rem 0;
-  }
-</style>

@@ -22,15 +22,15 @@ const { Content } = await import(`../../../examples/${id}/README.md`).catch(
 ---
 
 <Layout title={title}>
-  <main class="container mx-auto flex flex-col pt-6">
+  <main class="container mx-auto flex flex-col pt-[64px]">
     <div
-      class="flex flex-col gap-2 mb-5 sticky top-0 bg-base-100 pt-6 pb-2 z-10"
+      class="flex flex-col gap-2 mb-5 sticky top-0 bg-base-100 pt-6 pb-3 z-10"
     >
       <div class="flex items-center gap-2 mb-4">
         <Icon name="mdi:arrow-left" />
         <a href="/" class="link text-sm">Back to templates</a>
       </div>
-      <div class="flex justify-between gap-2">
+      <div class="flex justify-between gap-2 items-center pt-2">
         <h1 class="text-3xl font-bold">{title}</h1>
         <div class="flex gap-2">
           {
@@ -98,7 +98,7 @@ const { Content } = await import(`../../../examples/${id}/README.md`).catch(
         tags && (
           <div class="flex flex-wrap gap-2">
             {tags.map((tag) => (
-              <span class="badge badge-primary">{tag}</span>
+              <div class="badge badge-primary badge-sm">{tag}</div>
             ))}
           </div>
         )

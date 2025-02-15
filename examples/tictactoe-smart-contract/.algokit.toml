@@ -29,6 +29,8 @@ build = { commands = [
   'poetry run python -m smart_contracts build',
 ], description = 'Build all smart contracts in the project' }
 lint = { commands = [
+  'poetry run black --check --diff .',
+  'poetry run mypy',
 ], description = 'Perform linting' }
 audit-teal = { commands = [
   # 🚨 IMPORTANT 🚨: For strict TEAL validation, remove --exclude statements. The default starter contract is not for production. Ensure thorough testing and adherence to best practices in smart contract development. This is not a replacement for a professional audit.
