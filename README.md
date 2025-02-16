@@ -1,283 +1,109 @@
-# Example Gallery Spike
+# TypeScript Smart Contract Example
 
----
+This project has been generated using AlgoKit. See below for default getting started instructions.
 
-[Demo App](https://template-gallery-spike.pages.dev/)
+# Setup
 
-## Motivation
+### Pre-requisites
 
-The main motivation for this spike is to test the feasibility of a creating an example gallery for the Algorand ecosystem. One of the consistent feedback we have received about AlgoKit is that the hello world example is not enough to get started. It's easy to see how to set up the scaffold, but it's hard to see how to build a real app. Another comment we have received is that the set up to too complex for those wanting to build a simple app or simply exlore.
+- [Nodejs 20](https://nodejs.org/en/download) or later
+- [AlgoKit CLI 2.5](https://github.com/algorandfoundation/algokit-cli?tab=readme-ov-file#install) or later
+- [Docker](https://www.docker.com/) (only required for LocalNet)
+- [Puya Compiler 4.1.1](https://pypi.org/project/puyapy/) or later
 
-The example gallery will give the users the ability to see working examples, run them, and/or initialize them in their own environment. There are currently many examples for smart contracts in the individual AlgoKit repositories, but they are not easily discoverable. The gallery provides a visual way for the users to explore the examples and get inspired and use them as a starting point for their own projects.
+> For interactive tour over the codebase, download [vsls-contrib.codetour](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour) extension for VS Code, then open the [`.codetour.json`](./.tours/getting-started-with-your-algokit-project.tour) file in code tour extension.
 
-### Requirements
+### Initial Setup
 
-The following are some of the requirements that guided the spike:
+#### 1. Clone the Repository
+Start by cloning this repository to your local machine.
 
-- The examples should be maintainable as the number of examples grows - There is potential to have many examples and manual configurations and testing is not feasible. The easy maintainability of the examples is paramount to having a successful gallery. This means that they should include automatic testing, package management (particularly for the Algorand libs), and configuration management.
-- The examples should be composable - The examples should be able to inherit directory structures from other packages. This would allow you to manage a base template such as a basic React App and build a more specific example from it.
-- The examples should contain everything needed to run the example - This includes all the dependencies, configuration, and scripts needed to run the example. This will be useful when running the self-contained examples in cloud environments like codesandbox and codespaces.
-- The examples should not be manually generated - The examples should be generated using a script. This will allow us to easily generate the examples and keep them up to date.
-- The gallery should have a visual web frontend that:
-  - Displays the examples in a grid and allows users to filter
-  - Displays the metadata for each example including by not limited to: tags, description, features, and initialization commands
-  - Creates a detail page for each example that displays the example's README, a live preview if applicable.
-- The code for the example gallery should be as consolidated as possible.
-  - The templates that generate the examples should be included in the same repository as the gallery.
-- The templates and examples should allow for the same template initialization as exists today in AlgoKit. That means that the repo should be connected to the AlgoKit CLI.
+#### 2. Install Pre-requisites
+Ensure the following pre-requisites are installed and properly configured:
 
-# Approach
+- **Docker**: Required for running a local Algorand network.
+- **AlgoKit CLI**: Essential for project setup and operations. Verify installation with `algokit --version`, expecting `2.5.0` or later.
+- **Puya Compiler**: Can be installed from PyPi by running `pipx install puyapy`. Verify installation with `puyapy --version`, expecting `4.1.1` or later.
 
-## Directory Structure
+#### 3. Bootstrap Your Local Environment
+Run the following commands within the project folder:
 
-![Example Gallery Spike Directory Structure](assets/dir_struct_level_1.png)
+- **Setup Project**: Execute `algokit project bootstrap all` to install dependencies and setup npm dependencies.
+- **Configure environment**: Execute `algokit generate env-file -a target_network localnet` to create a `.env.localnet` file with default configuration for `localnet`.
+- **Start LocalNet**: Use `algokit localnet start` to initiate a local Algorand network.
 
-The `base_templates` directory contains the base templates that are used to generate the examples. They will be the templates that exists today but in separate repositories. The examples template are the rest that are not in the `base_templates` directory. They would probably be better grouped into subdirectories but for now this works. Each example folder contains the content for that specific framework. The examples are layer over the base templates.
+### Development Workflow
 
-![Templates Directory Structure](assets/template_dir_struct.png)
+#### Terminal
+Directly manage and interact with your project using AlgoKit commands:
 
-## Composability and Example Configuration
+1. **Build Contracts**: `algokit project run build` compiles all smart contracts. You can also specify a specific contract by passing the name of the contract folder as an extra argument.
+For example: `algokit project run build -- hello_world` will only build the `hello_world` contract.
+2. **Deploy**: Use `algokit project deploy localnet` to deploy contracts to the local network. You can also specify a specific contract by passing the name of the contract folder as an extra argument.
+For example: `algokit project deploy localnet -- hello_world` will only deploy the `hello_world` contract.
 
-The example gallery uses a composable architecture where examples are built by layering specialized templates on top of base templates. The examples are then added on top of the base template and specific algorand libs are added to the example. This approach enables code reuse and consistent patterns while maintaining flexibility for specific implementations.
+#### VS Code 
+For a seamless experience with breakpoint debugging and other features:
 
-### Base Templates
+1. **Open Project**: In VS Code, open the repository root.
+2. **Install Extensions**: Follow prompts to install recommended extensions.
+3. **Debugging**:
+   - Use `F5` to start debugging.
 
-The foundation of the system lies in the base templates located in `templates/base-templates/`. These templates provide the core structure for different types of projects - frontend applications (Astro, Vite+React), smart contracts (Python, TypeScript), and full dApps that combine both. Each base template is configured through its own `copier.yml` file that defines variables, prompts, and post-generation tasks.
+#### JetBrains IDEs
+While primarily optimized for VS Code, JetBrains IDEs are supported:
 
-For example, the Python smart contract base template's configuration in `templates/base-templates/python-smart-contract/copier.yaml` is the same copier file that exists today. Nothing would really change from the base templates that exist today. The biggest difference is that they would be consolidated into one repository along with the example templates and the hydrated examples.
+1. **Open Project**: In your JetBrains IDE, open the repository root.
+2. **Automatic Setup**: The IDE should configure the Node.js environment.
+3. **Debugging**: Use `Shift+F10` or `Ctrl+R` to start debugging. Note: Windows users may encounter issues with pre-launch tasks due to a known bug. See [JetBrains forums](https://youtrack.jetbrains.com/issue/IDEA-277486/Shell-script-configuration-cannot-run-as-before-launch-task) for workarounds.
 
-### Example Templates
+## AlgoKit Workspaces and Project Management
+This project supports both standalone and monorepo setups through AlgoKit workspaces. Leverage [`algokit project run`](https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/project/run.md) commands for efficient monorepo project orchestration and management across multiple projects within a workspace.
 
-Example templates extend these base templates by adding specific implementations and configurations. The TicTacToe smart contract example in `templates/smart-contract-example-tictactoe/copier.yml` shows how an example builds upon the Python smart contract base. The tictactoe copier file only has the `framework_choice` of python because only the `python_template_content` directory exists. If we wanted to add a typescript smart contract example, we would add a `typescript_template_content` directory and update the copier file with that option. The example.yml would then chose the typescript template as a base template and the `framework_choice` would be typescript.
+## AlgoKit Generators
 
-```yaml
-# Template configuration
-_templates_suffix: ""
-_subdirectory: "python_template_content"
+This template provides a set of [algokit generators](https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/generate.md) that allow you to further modify the project instantiated from the template to fit your needs, as well as giving you a base to build your own extensions to invoke via the `algokit generate` command.
 
-# User prompts
-framework_choice:
-  type: str
-  help: Choose your frontend framework
-  choices:
-    - python
+### Generate Smart Contract 
 
-_tasks:
-  - command: |
-      # Remove all directories in smart_contracts except:
-      # - directories starting with '_'
-      # - the 'smart_contracts' directory itself
-      # - the 'tictactoe' directory
-      find smart_contracts -maxdepth 1 -type d \
-        ! -name '_*' \
-        ! -name 'smart_contracts' \
-        ! -name 'tictactoe' \
-        -exec rm -rf {} +
-```
+By default the template creates a single `HelloWorld` contract under hello_world folder in the `smart_contracts` directory. To add a new contract:
 
-The add-dependencies template in `templates/base-templates/add-dependencies/` provides a mechanism for merging dependencies across different templates. You can see from the configuration in `templates/base-templates/add-dependencies/copier.yml` doesn't actually copy any files - notice the \_exclude: ["*"] configuration. Instead, it runs a dependency merging script that combines package dependencies from multiple sources. This is useful for the example templates because they can inherit dependencies from the base templates and the example templates and the final dependencies can be defined from the `add-dependencies` template.
+1. From the root of the project (`../`) execute `algokit generate smart-contract`. This will create a new starter smart contract and deployment configuration file under `{your_contract_name}` subfolder in the `smart_contracts` directory.
+2. Each contract potentially has different creation parameters and deployment steps. Hence, you need to define your deployment logic in `deploy-config.ts` file.
+3. Technically, you need to reference your contract deployment logic in the `index.ts` file. However, by default, `index.ts` will auto import all TypeScript deployment files under `smart_contracts` directory. If you want to manually import specific contracts, modify the default code provided by the template in `index.ts` file.
 
-```yaml
-# Copier configuration for dependency merging
-_tasks:
-  - name: Merge dependencies
-    command: python ../../scripts/merge_dependencies.py --source "{{ _copier_conf.src_path }}" --destination "{{ _copier_conf.dst_path }}" --overwrite_existing_only false
+> Please note, above is just a suggested convention tailored for the base configuration and structure of this template. The default code supplied by the template in the `index.ts` file is tailored for the suggested convention. You are free to modify the structure and naming conventions as you see fit.
 
-_exclude:
-  - "*" # Exclude all files from being copied
+### Generate '.env' files
 
-_templates_suffix: "" # No template processing needed
+By default the template instance does not contain any env files to deploy to different networks. Using [`algokit project deploy`](https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/project/deploy.md) against `localnet` | `testnet` | `mainnet` will use default values for `algod` and `indexer` unless overwritten via `.env` or `.env.{target_network}`. 
 
-_skip_if_exists:
-  - "*" # Skip if any files exist
-```
+To generate a new `.env` or `.env.{target_network}` file, run `algokit generate env-file`
 
-### Configuration Management
+### Debugging Smart Contracts
 
-The central configuration file `examples.yml` serves as the source of truth for all examples. It defines how templates should be composed and configured. Here's how a dApp example is configured:
+This project is optimized to work with AlgoKit AVM Debugger extension. To activate it:
 
-```yaml
-templates:
-  - source: "templates/base-templates/dapp-template"
-    data:
-      project_name: "dApp-basic"
-      author_name: ""
-      contract_name: "counter"
-      preset_name: "starter"
-      deployment_language: "python"
-      use_workspace: true
-  - source: "templates/base-templates/python-smart-contract"
-    destination: "examples/dapp-basic/projects/dApp-basic-contracts"
-    data:
-      project_name: "Python Smart Contract Example"
-      contract_name: "hello_world"
-  - source: "templates/base-templates/frontend-vite-react"
-    destination: "examples/dapp-basic/projects/dApp-basic-frontend"
-    data:
-      project_name: "Counter Frontend"
-      description: "React frontend for the counter smart contract"
-```
-
-The example generation process is handled by `scripts/create_examples.py`, which reads this configuration and processes each template in sequence. The script ensures proper template composition and dependency management.
-
-To maintain consistency and completeness, example configurations are validated using the schema defined in `scripts/validate_configuration.py`
+Refer to the commented header in the `index.ts` file in the `smart_contracts` folder.Since you have opted in to include VSCode launch configurations in your project, you can also use the `Debug TEAL via AlgoKit AVM Debugger` launch configuration to interactively select an available trace file and launch the debug session for your smart contract.
 
-```python
-class Example(BaseModel):
-    id: str = Field(
-        description="Unique identifier for the example."
-    )
-    type: ExampleType = Field(
-        description="Category of the example (frontend, smart-contract, or dapp)"
-    )
-    author: str = Field(
-        description="Name or organization of the example's author"
-    )
-```
-
-This architecture makes it straightforward to add new examples by defining their composition in examples.yml and creating any example-specific template content, while leveraging existing base templates for common functionality.
-
-## Testing
-
-Testing follows the same composable architecture as the examples themselves. Just as base templates provide foundational structure, they also establish core testing patterns that example templates can extend and customize.
-Base templates include standard testing configurations - for instance, the Python smart contract template includes pytest setup for both unit tests and application client tests. From templates/base-templates/python-smart-contract/copier.yaml:
-
-```yaml
-use_python_pytest:
-  type: bool
-  when: "{{ preset_name == 'custom' }}"
-  help: Do you want to include unit tests (via pytest)?
-  default: "{{ 'yes' if preset_name == 'production' else 'no' }}"
-```
-
-When an example template extends a base template, it inherits these testing configurations and can add its own specific test cases. For instance, the TicTacToe example adds game-specific test scenarios while utilizing the testing framework provided by the Python smart contract base template.
-The testing configuration is also managed through the central examples.yml, ensuring that test dependencies and configurations are properly merged across templates. This means that when generating an example, the appropriate testing framework and configuration are automatically included based on the template composition.
-
-## Managing Dependencies
-
-Dependencies in the template gallery follow a hierarchical inheritance pattern, where each layer can build upon or override the previous ones. This approach allows for flexible
-
-When an example is generated, the dependency resolution process:
-
-1. Starts with the base template's dependencies
-2. Applies any additions or overrides from the example template
-3. Optionally processes the add-dependencies template to merge and resolve any conflicts
-
-The process is managed through the examples.yml configuration, which specifies the template composition and therefore the dependency inheritance chain for each example.
-
-### Inheritance Flow
-
-1. The dependency inheritance flows through three levels:
-   Base templates provide foundational dependencies. For instance, a React base template includes core React dependencies, while a Python smart contract template includes basic Algorand SDK dependencies.
-
-2. Example templates can then extend or override these base dependencies to add specific packages needed for their implementation. For example, a TicTacToe smart contract might add state management libraries on top of the base Python smart contract dependencies.
-
-3. Finally, the add-dependencies template in templates/base-templates/add-dependencies/ provides an optional final layer of dependency management:
-
-```yaml
-# Copier configuration for dependency merging
-_tasks:
-  - name: Merge dependencies
-    command: python ../../scripts/merge_dependencies.py --source "{{ _copier_conf.src_path }}" --destination "{{ _copier_conf.dst_path }}" --overwrite_existing_only false
-
-_exclude:
-  - "*" # Exclude all files from being copied
-
-_templates_suffix: "" # No template processing needed
-
-_skip_if_exists:
-  - "*" # Skip if any files exist
-```
-
-This template is unique as it doesn't copy files (\_exclude: ["*"]) but instead runs a merge script to combine dependencies from multiple sources. The script handles version conflicts and ensures compatibility between different dependency sets.
-
-## Deployment
-
-The template gallery uses GitHub Actions for automated deployment and example management through three key workflows that are triggered by different events. These workflows work together to maintain a live demo site, provide easy access to individual examples, and ensure example quality through automated testing. The deployment process is entirely automated, triggered by pull_requests, pushes to the main branch or manual workflow dispatch.
-
-### On Pull Request Trigger
-
-The run-test.yml workflow ensures example quality by running tests across all examples. The workflow detects project types (Node.js, Python, or dApp) and runs appropriate tests, ensuring all examples remain functional as the gallery evolves.
-
-```yaml
-jobs:
-  test-examples:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run tests for each example
-        run: |
-          # Process each example
-          echo "$EXAMPLES" | yq e -o=json -I=0 '.' - | jq -r '.[] | @json' | while read -r example; do
-            ID=$(echo "$example" | jq e '.id' -)
-            TYPE=$(echo "$example" | yq e '.type' -)
-            # ... test execution steps ...
-          done
-```
-
-### On Push to Main Trigger
-
-#### Example Branch Creation
-
-The workflow creates a new branch for each example and updates the branch with the latest changes from the main branch. These branches only contain the fully hydrated example files that can copied and run into their own environment. These are primarily used to launch Github codespaces for the examples.
-
-```yaml
-name: Create Example Branches
-
-permissions:
-  contents: write
-
-jobs:
-  create-branches:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Create branches for examples
-        run: |
-          # Get list of example directories
-          for dir in examples/*/; do
-            dir_name=${dir#examples/}
-            branch_name="examples/$dir_name"
-            # ... branch creation and update steps ...
-          done
-```
-
-#### Publishing the Demo Sites
-
-Only the examples that are frontend only have the ability to create demo sites. One important caveat of that is that they will have to point to existing network in order for them to work. Since the frontend examples are static sites, they can be hosted on Github Pages. The frontend demo sites are automatically deployed through the `publish-demo-sites.yml` workflow. The workflow reads the examples.yml configuration, identifies frontend examples, and builds each one with the appropriate base path for GitHub Pages deployment.
-
-```yaml
-name: Publish Demo Sites
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Parse examples and build frontends
-        run: |
-          # Read examples.yml and filter frontend examples
-          FRONTEND_EXAMPLES=$(yq e '.examples | map(select(.type == "frontend"))' examples/examples.yml)
-
-          # Process each frontend example as a complete object
-          echo "$FRONTEND_EXAMPLES" | yq e -o=json -I=0 '.' - | jq -r '.[] | @json' | while read -r example; do
-            ID=$(echo "$example" | jq -r '.id')
-            REPO_PATH=examples/$ID
-            # ... build steps ...
-          done
-```
-
-## Developing the Templates and Examples
-
-Unfortunately, similar to how it is today, the developer would develop in the fully hydrated examples folder and port the changes back to the templates. There are probably ways to make this better, but we can figure that out as we go.
-
-## Linking to the AlgoKit CLI
-
-DEMO
-![AlgoKit CLI Demo](assets/algokit-cli-new-init.gif)
-
-[AlgoKit CLI Repo Spike Branch](https://github.com/algorandfoundation/algokit-cli/tree/feature/example-gallery-spike)
-
-Currently the cli init command runs copier on the templates repo URL. Given that the templates are now in the same repo as the examples, I switched the init command to build the templates yaml similar to the examples.yml file based on the prompts in the menus. I switched the CLI to use [python textual](https://textual.textualize.io/) which gives a richer experience for the CLI.
+
+For information on using and setting up the `AlgoKit AVM Debugger` VSCode extension refer [here](https://github.com/algorandfoundation/algokit-avm-vscode-debugger). To install the extension from the VSCode Marketplace, use the following link: [AlgoKit AVM Debugger extension](https://marketplace.visualstudio.com/items?itemName=algorandfoundation.algokit-avm-vscode-debugger).
+
+# Tools
+
+This project makes use of Algorand TypeScript to build Algorand smart contracts. The following tools are in use:
+
+- [Algorand](https://www.algorand.com/) - Layer 1 Blockchain; [Developer portal](https://developer.algorand.org/), [Why Algorand?](https://developer.algorand.org/docs/get-started/basics/why_algorand/)
+- [AlgoKit](https://github.com/algorandfoundation/algokit-cli) - One-stop shop tool for developers building on the Algorand network; [docs](https://github.com/algorandfoundation/algokit-cli/blob/main/docs/algokit.md), [intro tutorial](https://github.com/algorandfoundation/algokit-cli/blob/main/docs/tutorials/intro.md)
+- [Algorand TypeScript](https://github.com/algorandfoundation/puya-ts/) - A semantically and syntactically compatible, typed TypeScript language that works with standard TypeScript tooling and allows you to express smart contracts (apps) and smart signatures (logic signatures) for deployment on the Algorand Virtual Machine (AVM); [docs](https://github.com/algorandfoundation/puya-ts/), [examples](https://github.com/algorandfoundation/puya-ts/tree/main/examples)
+- [AlgoKit Utils](https://github.com/algorandfoundation/algokit-utils-ts) - A set of core Algorand utilities that make it easier to build solutions on Algorand.
+- [NPM](https://www.npmjs.com/): TypeScript packaging and dependency management.
+- [TypeScript](https://www.typescriptlang.org/): Strongly typed programming language that builds on JavaScript
+- [ts-node-dev](https://github.com/wclr/ts-node-dev): TypeScript development execution environment
+- [vitest](https://vitest.dev/): Automated testing.
+
+
+It has also been configured to have a productive dev experience out of the box in [VS Code](https://code.visualstudio.com/), see the [.vscode](./.vscode) folder.
+
+
+
