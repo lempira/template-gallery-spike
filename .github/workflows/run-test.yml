@@ -1,0 +1,62 @@
+name: Run Example Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test-examples:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Run tests for each example
+        run: |
+          # Read examples.yml
+          EXAMPLES=$(yq e '.examples'  examples/examples.yml)
+
+          # Process each example
+          echo "$EXAMPLES" | yq e -o=json -I=0 '.' - | jq -r '.[] | @json' | while read -r example; do
+            ID=$(echo "$example" | yq e '.id' -)
+            TYPE=$(echo "$example" | yq e '.type' -)
+            REPO_PATH=examples/$ID
+            
+            echo "Processing example: $ID (type: $TYPE)"
+            cd "$REPO_PATH" || exit 1
+            
+            # Check project type and run appropriate tests
+            if [ -f "package.json" ]; then
+              echo "Found Node.js project, running npm tests..."
+              npm install
+              npm run test
+            elif [ -f "pyproject.toml" ]; then
+              echo "Found Python project, running poetry tests..."
+              poetry install
+              poetry run pytest
+            elif [ "$TYPE" = "dapp" ]; then
+              echo "# TODO: Implement dapp testing strategy"
+              echo "Skipping dapp tests for now"
+            else
+              echo "Unknown project type or no tests configured"
+            fi
+            
+            cd ../../
+          done
