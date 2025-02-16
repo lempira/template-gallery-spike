@@ -28,7 +28,6 @@ examples:
         data:
           framework_choice: "astro"
       - source: "templates/base-templates/add-dependencies"
-        
 
   - id: "frontend-example-1-react"
     type: "frontend"
@@ -82,23 +81,13 @@ examples:
       - source: "templates/base-templates/python-smart-contract"
         data:
           project_name: "Python Smart Contract Example"
-          author_name: "Your Name"
-          author_email: "your@email.tld"
+          author_name: "Alyosha"
+          author_email: "john@example.com"
           contract_name: "hello_world"
           preset_name: "starter"
           deployment_language: "python"
           use_workspace: false
-          ide_vscode: true
-          code_tours: true
-          ide_jetbrains: false
-          use_python_pytest: false
-          python_linter: "none"
-          use_python_black: true
-          use_python_mypy: true
-          use_python_pip_audit: false
-          use_github_actions: false
-          use_pre_commit: false
-          use_dispenser: false
+          use_python_pytest: true
       - source: "templates/smart-contract-example-tictactoe"
         data:
           framework_choice: "python"
@@ -125,12 +114,13 @@ examples:
       - source: "templates/base-templates/typescript-smart-contract"
         data:
           project_name: "TypeScript Smart Contract Example"
-          author_name: ""
-          author_email: ""
+          author_name: "Alyosha"
+          author_email: "john@example.com"
           contract_name: "hello_world"
           preset_name: "starter"
           deployment_language: "typescript"
           use_workspace: false
+          use_vitest: true
       - source: "templates/smart-contract-example-voting"
         data:
           framework_choice: "typescript"
@@ -157,12 +147,13 @@ examples:
       - source: "templates/base-templates/python-smart-contract"
         data:
           project_name: "Hello World Python Smart Contract"
-          author_name: ""
-          author_email: ""
+          author_name: "Alyosha"
+          author_email: "john@example.com"
           contract_name: "hello_world"
           preset_name: "starter"
           deployment_language: "python"
           use_workspace: false
+          use_python_pytest: true
       - source: "templates/smart-contract-example-hello-world"
         data:
           framework_choice: "python"
@@ -189,12 +180,13 @@ examples:
       - source: "templates/base-templates/typescript-smart-contract"
         data:
           project_name: "Hello World TypeScript Smart Contract"
-          author_name: ""
-          author_email: ""
+          author_name: "Alyosha"
+          author_email: "john@example.com"
           contract_name: "hello_world"
           preset_name: "starter"
           deployment_language: "typescript"
           use_workspace: false
+          use_vitest: true
       - source: "templates/smart-contract-example-hello-world"
         data:
           framework_choice: "typescript"
@@ -222,8 +214,8 @@ examples:
       - source: "templates/base-templates/dapp-template"
         data:
           project_name: "dApp-basic"
-          author_name: ""
-          author_email: ""
+          author_name: "Alyosha"
+          author_email: "john@example.com"
           contract_name: "counter"
           preset_name: "starter"
           deployment_language: "python"

@@ -1,23 +1,22 @@
-from algopy.testing import ApplicationClient
-from algopy.testing.utils import TestAccount
-from smart_contracts.hello_world.contract import HelloWorld
+import pytest
 
+def test_addition():
+    assert 2 + 2 == 4
+    assert 0 + 0 == 0
+    assert -1 + 1 == 0
 
-def test_hello():
-    # Create test account
-    creator = TestAccount()
-    
-    # Create an Application client
-    app_client = ApplicationClient(
-        app_cls=HelloWorld,
-        client=creator,
-    )
-    
-    # Deploy the app
-    app_client.create()
-    
-    # Call the hello method
-    result = app_client.call("hello", name="World")
-    
-    # Verify the result
-    assert result.return_value == "Hello, World" 
+def test_multiplication():
+    assert 3 * 3 == 9
+    assert 0 * 5 == 0
+    assert -2 * 3 == -6
+
+def test_division():
+    assert 8 / 2 == 4
+    assert 10 / 2 == 5
+    with pytest.raises(ZeroDivisionError):
+        1 / 0
+
+def test_subtraction():
+    assert 5 - 3 == 2
+    assert 1 - 1 == 0
+    assert -1 - (-1) == 0

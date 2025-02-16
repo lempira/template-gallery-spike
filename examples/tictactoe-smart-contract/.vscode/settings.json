@@ -24,14 +24,9 @@
       // Prevent default import sorting from running; Ruff will sort imports for us anyway
       "source.organizeImports": "never"
     },
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": null,
     },
-  "black-formatter.args": ["--config=pyproject.toml"],
-  "python.analysis.typeCheckingMode": "off",
-  "mypy.configFile": "pyproject.toml",
-  // set to empty array to use config from project
-  "mypy.targets": [],
-  "mypy.runUsingActiveInterpreter": true,
+  "python.testing.pytestEnabled": true,
   
   // On Windows, if execution policy is set to Signed (default) then it won't be able to activate the venv
   //  so instead let's set it to RemoteSigned for VS Code terminal

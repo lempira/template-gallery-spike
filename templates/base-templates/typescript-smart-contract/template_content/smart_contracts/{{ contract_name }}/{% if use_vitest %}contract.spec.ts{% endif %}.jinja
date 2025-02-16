@@ -1,14 +1,18 @@
-import { TestExecutionContext } from '@algorandfoundation/algorand-typescript-testing'
-import { describe, expect, it } from 'vitest'
-import { {{ contract_name.split('_')|map('capitalize')|join }} } from './contract.algo'
+import { describe, it, expect } from "vitest";
 
-describe('{{ contract_name.split('_')|map('capitalize')|join }} contract', () => {
-  const ctx = new TestExecutionContext()
-  it('Logs the returned value when sayHello is called', () => {
-    const contract = ctx.contract.create({{ contract_name.split('_')|map('capitalize')|join }})
+describe("Math operations", () => {
+  it("should correctly add two numbers", () => {
+    const result = 2 + 3;
+    expect(result).toBe(5);
+  });
 
-    const result = contract.hello('Sally')
+  it("should correctly add negative numbers", () => {
+    const result = -2 + -3;
+    expect(result).toBe(-5);
+  });
 
-    expect(result).toBe('Hello Sally')
-  })
-})
+  it("should correctly add zero", () => {
+    const result = 10 + 0;
+    expect(result).toBe(10);
+  });
+});

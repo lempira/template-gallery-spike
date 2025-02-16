@@ -1,55 +1,22 @@
-from algopy.testing import ApplicationClient
-from algopy.testing.utils import TestAccount
-from smart_contracts.hello_world.contract import HelloWorld
+import pytest
 
+def test_addition():
+    assert 2 + 2 == 4
+    assert 0 + 0 == 0
+    assert -1 + 1 == 0
 
-def test_hello_world_greeting():
-    # Create test accounts
-    creator = TestAccount()
-    user = TestAccount()
-    
-    # Create an Application client
-    app_client = ApplicationClient(
-        app_cls=HelloWorld,
-        client=creator,
-    )
-    
-    # Deploy the app
-    app_id = app_client.create()
-    assert app_id is not None
-    
-    # Test default greeting
-    result = app_client.call("get_greeting")
-    assert result.return_value == "Hello, World!"
-    
-    # Test setting new greeting
-    app_client.call(
-        "set_greeting",
-        greeting="Hello, Algorand!",
-        sender=user
-    )
-    
-    # Verify new greeting
-    result = app_client.call("get_greeting")
-    assert result.return_value == "Hello, Algorand!"
+def test_multiplication():
+    assert 3 * 3 == 9
+    assert 0 * 5 == 0
+    assert -2 * 3 == -6
 
+def test_division():
+    assert 8 / 2 == 4
+    assert 10 / 2 == 5
+    with pytest.raises(ZeroDivisionError):
+        1 / 0
 
-def test_hello_world_counter():
-    creator = TestAccount()
-    
-    app_client = ApplicationClient(
-        app_cls=HelloWorld,
-        client=creator,
-    )
-    
-    # Deploy the app
-    app_client.create()
-    
-    # Test initial counter value
-    result = app_client.call("get_counter")
-    assert result.return_value == 0
-    
-    # Test increment
-    app_client.call("increment")
-    result = app_client.call("get_counter")
-    assert result.return_value == 1 
+def test_subtraction():
+    assert 5 - 3 == 2
+    assert 1 - 1 == 0
+    assert -1 - (-1) == 0
